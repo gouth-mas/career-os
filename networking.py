@@ -21,8 +21,6 @@ cursor.execute("""
 conn.commit()
 conn.close()
 
-date_met = datetime.now().strftime("%Y-%m-%d")
-
 def add_contact():
     name = input("Name: ")
     firm = input("Firm: ")
