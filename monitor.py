@@ -45,10 +45,5 @@ for name, url in pages.items():
         print(f"{name}: failed to fetch")
         current[name] = None
 
-hash = {
-    "Macquarie": "8f2486794cd61375c05705e24fd37893",
-    "Deloitte": "46ed22c58dc2bfc51b26ac08cca1a5e5"
-}
-
 with open("snapshot.json", "w") as f:
     json.dump(current, f)
