@@ -7,8 +7,11 @@ page = st.sidebar.selectbox("Navigate", ["Applications", "Networking", "Monitor"
 
 if page == "Applications":
     st.title("Applications Dashboard")
-    df = pd.read_csv("applications.csv")
-    st.dataframe(df)
+    try:
+        df = pd.read_csv("applications.csv")
+        st.dataframe(df)
+    except FileNotFoundError:
+        st.info("No applications yet. Add some using tracker.py first.")
 
 elif page == "Networking":
     st.title("Networking Dashboard")
@@ -19,11 +22,13 @@ elif page == "Networking":
 
 elif page == "Monitor":
     st.title("Monitor Dashboard")
-    with open("snapshot.json", "r") as f:
-        data = json.load(f)
-    
-    monitor_df = pd.DataFrame([
-        {"Firm": firm, "Last Hash": hash[:8] + "..."}
-        for firm, hash in data.items()
-    ])
-    st.dataframe(monitor_df)
+    try:
+        with open("snapshot.json", "r") as f:
+            data = json.load(f)
+        monitor_df = pd.DataFrame([
+            {"Firm": firm, "Last Hash": hash[:8] + "..."}
+            for firm, hash in data.items()
+        ])
+        st.dataframe(monitor_df)
+    except FileNotFoundError:
+        st.info("No snapshot yet. Run monitor.py first.")
