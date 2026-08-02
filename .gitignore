@@ -1,2 +1,12 @@
 .env
 *.csv
+credentials.json
+token.json
+networking.db
+applications.csv
+snapshot.json
+server.py
+index.html
+calendar_setup.py
+email_reminders.py
+*.json
